@@ -5,6 +5,17 @@ describe WardrobeItemsController do
     it "assigns all wardrobe items as @wardrobe_items" do
       wardrobe_item = WardrobeItem.create
       get :index
+
+      expect(assigns('wardrobe_items')).to eq([wardrobe_item])
+    end
+  end
+
+  describe 'GET show' do
+    it 'shows one id in @wardrobe_items' do
+      wardrobe_item = WardrobeItem.create
+      get :show, {:id => wardrobe_item.id }
+
+      expect(assigns('wardrobe_items')).to eq(wardrobe_item)
     end
   end
 end
